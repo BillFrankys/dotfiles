@@ -1,0 +1,5 @@
+[alias]
+	dtf = !git --git-dir=$HOME/.dotfiles --work-tree=$HOME
+[user]
+	email = nushellrock@gmail.com
+	name = Bill Frankys
