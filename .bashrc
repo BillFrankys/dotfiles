@@ -116,3 +116,8 @@ if ! shopt -oq posix; then
   fi
 fi
 alias dotfiles='/usr/bin/git --git-dir=/home/$USER/.dotfiles/ --work-tree=/home/$USER'
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+export PATH="$PATH:$HOME/.local/bin"
+. "$HOME/.cargo/env"
