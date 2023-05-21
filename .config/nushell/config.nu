@@ -1,13 +1,12 @@
 # Nushell Config File
 
-source starship-prompt.nu
-source ls-icons.nu
+source prompt.nu
 source aliases.nu
 source themes.nu
 
 # Get just the extern definitions without the custom completion commands
 use completions.nu *
-
+use
 # External completer example
 let carapace_completer = {|spans|
     carapace $spans.0 nushell $spans | from json
