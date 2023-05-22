@@ -553,7 +553,9 @@ let-env config = {
 	
 use nupm
 use nupm/activations *
+use scripts/job.nu
 
+source ~/.local/share/atuin/init.nu
 
 if not ($env.NU_SCRIPTS_DIR | path exists) {
   print $"(ansi red_bold)error(ansi reset): ($env.NU_SCRIPTS_DIR) does not exist..."
