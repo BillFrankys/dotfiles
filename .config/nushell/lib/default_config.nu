@@ -1,6 +1,6 @@
-  # Nushell Config File
+# Nushell Config File
 #
-# version = 0.80.0
+# version = 0.80.1
 
 # For more information on defining custom themes, see
 # https://www.nushell.sh/book/coloring_and_theming.html
@@ -175,9 +175,9 @@ let light_theme = {
 }
 
 # External completer example
- let carapace_completer = {|spans|
-     carapace $spans.0 nushell $spans | from json
-}
+# let carapace_completer = {|spans|
+#     carapace $spans.0 nushell $spans | from json
+# }
 
 
 # The default config record. This is where much of your global configuration is setup.
@@ -266,17 +266,17 @@ let-env config = {
     max_size: 10000 # Session has to be reloaded for this to take effect
     sync_on_enter: true # Enable to share history between multiple sessions, else you have to close the session to write history to file
     file_format: "plaintext" # "sqlite" or "plaintext"
-    history_isolation: false # true enables history isolation, false disables it. true will allow the history to be isolated to the current session. false will allow the history to be shared across all sessions.
+    history_isolation: true # true enables history isolation, false disables it. true will allow the history to be isolated to the current session. false will allow the history to be shared across all sessions.
   }
   completions: {
     case_sensitive: false # set to true to enable case-sensitive completions
     quick: true  # set this to false to prevent auto-selecting completions when only one remains
     partial: true  # set this to false to prevent partial filling of the prompt
-    algorithm: "fuzzy"  # prefix or fuzzy
+    algorithm: "prefix"  # prefix or fuzzy
     external: {
       enable: true # set to false to prevent nushell looking into $env.PATH to find more suggestions, `false` recommended for WSL users as this look up my be very slow
       max_results: 100 # setting it lower can improve completion performance at the cost of omitting some options
-      completer: $carapace_completer #above as an example
+      completer: null # check 'carapace_completer' above as an example
     }
   }
   filesize: {
@@ -296,7 +296,7 @@ let-env config = {
   use_ansi_coloring: true
   bracketed_paste: true # enable bracketed paste, currently useless on windows
   edit_mode: emacs # emacs, vi
-  shell_integration: false # enables terminal markers and a workaround to arrow keys stop working issue
+  shell_integration: true # enables terminal markers and a workaround to arrow keys stop working issue
   render_right_prompt_on_last_line: false # true or false to enable or disable right prompt to be rendered on last line of the prompt.
 
   hooks: {
@@ -540,6 +540,3 @@ let-env config = {
     }
   ]
 }
-
-
-use nupm/activations *
