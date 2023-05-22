@@ -1,4 +1,4 @@
-# Nushell Config File
+  # Nushell Config File
 #
 # version = 0.80.0
 
@@ -175,7 +175,7 @@ let light_theme = {
 }
 
 # External completer example
-let carapace_completer = {|spans|
+ let carapace_completer = {|spans|
      carapace $spans.0 nushell $spans | from json
 }
 
@@ -266,13 +266,13 @@ let-env config = {
     max_size: 10000 # Session has to be reloaded for this to take effect
     sync_on_enter: true # Enable to share history between multiple sessions, else you have to close the session to write history to file
     file_format: "plaintext" # "sqlite" or "plaintext"
-    history_isolation: true # true enables history isolation, false disables it. true will allow the history to be isolated to the current session. false will allow the history to be shared across all sessions.
+    history_isolation: false # true enables history isolation, false disables it. true will allow the history to be isolated to the current session. false will allow the history to be shared across all sessions.
   }
   completions: {
     case_sensitive: false # set to true to enable case-sensitive completions
     quick: true  # set this to false to prevent auto-selecting completions when only one remains
     partial: true  # set this to false to prevent partial filling of the prompt
-    algorithm: "prefix"  # prefix or fuzzy
+    algorithm: "fuzzy"  # prefix or fuzzy
     external: {
       enable: true # set to false to prevent nushell looking into $env.PATH to find more suggestions, `false` recommended for WSL users as this look up my be very slow
       max_results: 100 # setting it lower can improve completion performance at the cost of omitting some options
@@ -505,16 +505,6 @@ let-env config = {
         ]
       }
     }
-{
-    name: nupm
-    modifier: control
-    keycode: char_n
-    mode: [emacs, vi_insert, vi_normal]
-    event: {
-        send: executehostcommand
-        cmd: "overlay use --prefix nupm"
-    }
-}
     {
       name: kill-line
       modifier: control
@@ -553,10 +543,3 @@ let-env config = {
 
 
 use nupm/activations *
-use nupm
-
-if not ($env.NU_SCRIPTS_DIR | path exists) {
-  print $"(ansi red_bold)error(ansi reset): ($env.NU_SCRIPTS_DIR) does not exist..."
-  print $"(ansi cyan)info(ansi reset): pulling the scripts from ($env.NU_SCRIPTS_REMOTE)..."
-  git clone $env.NU_SCRIPTS_REMOTE $env.NU_SCRIPTS_DIR
-}

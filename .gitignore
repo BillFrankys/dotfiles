@@ -4,3 +4,9 @@
 !/.gitignore
 !/.gitconfig
 /.config/nushell/history.*
+
+
+# Added by cargo
+
+/target
+/Cargo.lock
