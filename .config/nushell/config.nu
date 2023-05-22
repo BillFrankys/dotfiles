@@ -6,10 +6,9 @@ source personal/aliases.nu
 source default_config.nu
 
 use core/themes.nu
-# use keybindings/keybindings.nu
-# use completions/cargo.nu * 
+use core/hooks.nu
+use core/completions.nu
 
-# source-env core/hooks.nu
 # source-env core/menus.nu
 # source-env core/keybindings.nu
 
@@ -35,7 +34,7 @@ let custom_config = {
   edit_mode: vi
   show_banner: false
 
-  # hooks: (hooks)
+  hooks: (hooks)
   # menus: (menus)
   # keybindings: (keybindings)
     completions: {
