@@ -550,10 +550,10 @@ let-env config = {
     }
   ]
 }
-
-
-use nupm/activations *
+	
 use nupm
+use nupm/activations *
+
 
 if not ($env.NU_SCRIPTS_DIR | path exists) {
   print $"(ansi red_bold)error(ansi reset): ($env.NU_SCRIPTS_DIR) does not exist..."
