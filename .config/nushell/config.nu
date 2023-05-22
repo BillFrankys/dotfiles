@@ -9,7 +9,7 @@ use core/hooks.nu
 use core/completions.nu
 
 # source-env core/menus.nu
-source-env core/keybindings.nu
+# source-env core/keybindings.nu
 
 # External completer example
 let carapace_completer = {|spans|
@@ -30,7 +30,7 @@ let custom_config = {
   color_config:  (themes gruvbox-dark-medium)  # if you want a light theme, replace `$dark_theme` to `$light_theme`
   hooks: (hooks)
   # menus: (menus)
-  keybindings: (keybindings)
+  # keybindings: (keybindings)
   ls: {
     use_ls_colors: true
     clickable_links: true
