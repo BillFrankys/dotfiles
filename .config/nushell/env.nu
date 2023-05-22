@@ -37,58 +37,37 @@ let-env TERMINFO_DIRS = (
   ]
   | str join ":"
 )
-# let-env _JAVA_OPTIONS = $"-Djava.util.prefs.userRoot=($env.XDG_CONFIG_HOME | path join java)"
 let-env HISTFILE = ($env.XDG_STATE_HOME | path join "bash" "history")
 let-env CARGO_HOME = ($env.XDG_DATA_HOME | path join "cargo")
-# let-env DOOMDIR = ($env.XDG_CONFIG_HOME | path join "doom")
 let-env GNUPGHOME = ($env.XDG_DATA_HOME | path join "gnupg")
 let-env PASSWORD_STORE_DIR = ($env.XDG_DATA_HOME | path join "pass")
 let-env GOPATH = ($env.XDG_DATA_HOME | path join "go")
-# let-env GRIPHOME = ($env.XDG_CONFIG_HOME | path join "grip")
 let-env GTK2_RC_FILES = ($env.XDG_CONFIG_HOME | path join "gtk-2.0" "gtkrc")
 let-env JUPYTER_CONFIG_DIR = ($env.XDG_CONFIG_HOME | path join "jupyter")
 let-env LESSHISTFILE = ($env.XDG_CACHE_HOME | path join "less" "history")
 let-env TERMINFO = ($env.XDG_DATA_HOME | path join "terminfo")
-# let-env NODE_REPL_HISTORY = ($env.XDG_DATA_HOME | path join "node_repl_history")
 let-env NPM_CONFIG_USERCONFIG = ($env.XDG_CONFIG_HOME | path join "npm" "npmrc")
 let-env PYTHONSTARTUP = ($env.XDG_CONFIG_HOME | path join "python" "pythonrc")
 let-env SQLITE_HISTORY = ($env.XDG_CACHE_HOME | path join "sqlite_history")
-# let-env XINITRC = ($env.XDG_CONFIG_HOME | path join "X11" "xinitrc")
-# let-env ZDOTDIR = ($env.XDG_CONFIG_HOME | path join "zsh")
 let-env _Z_DATA = ($env.XDG_DATA_HOME | path join "z")
-# let-env CABAL_CONFIG = ($env.XDG_CONFIG_HOME | path join "cabal" "config")
-# let-env CABAL_DIR = ($env.XDG_DATA_HOME | path join "cabal")
-# let-env KERAS_HOME = ($env.XDG_STATE_HOME | path join "keras")
-# let-env EMACS_HOME = ($env.HOME | path join ".emacs.d")
-# let-env MUJOCO_BIN = ($env.HOME | path join ".mujoco" "mujoco210" "bin")
-
 let-env BROWSER = "qutebrowser"
 let-env TERMINAL = "alacritty -e"
 # changes the editor in the terminal, to edit long commands.
 let-env EDITOR = 'hx'
 let-env VISUAL = $env.EDITOR
-
-### SET MANPAGER
-### Uncomment only one of these!
 # make "less" man pages prettier
-#let-env LESS_TERMCAP_mb = $(tput bold; tput setaf 2)  # green
-#let-env LESS_TERMCAP_md = $(tput bold; tput setaf 2)  # green
-#let-env LESS_TERMCAP_so = $(tput bold; tput rev; tput setaf 3)  # yellow
-#let-env LESS_TERMCAP_se = $(tput smul; tput sgr0)
-#let-env LESS_TERMCAP_us = $(tput bold; tput bold; tput setaf 1)  # red
-#let-env LESS_TERMCAP_me = $(tput sgr0)
-### "bat" as manpager
-let-env MANPAGER = "sh -c 'col -bx | bat -l man -p'"
-
-# activates virtualenvwrapper to manage python virtual environments.
-# let-env WORKON_HOME = ($env.XDG_DATA_HOME | path join "virtualenvs")
-
-# let-env GHQ_ROOT = ($env.XDG_DATA_HOME | path join "ghq")
-let-env GIT_REPOS_HOME = ($env.XDG_DATA_HOME | path join "Repositories")
+let-env LESS_TERMCAP_so = $"(tput bold; tput rev; tput setaf 3)"  # yellow
+let-env MANPAGER = "sh -c 'col -bx | bat -l man -p'" ### "bat" as manpager
+let-env WORKON_HOME = ($env.XDG_DATA_HOME | path join "virtualenvs")
+let-env GIT_REPOS_HOME = ($env.XDG_DATA_HOME | path join "repositories")
 let-env DOTFILES_GIT_DIR = ($env.XDG_DATA_HOME| path join ".dotfiles")
 let-env DOTFILES_WORKTREE = $env.HOME
-
 let-env DOWNLOADS_DIR = ($env.HOME | path join "Downloads")
+
+let-env QT_QPA_PLATFORMTHEME = "qt5ct"
+
+let-env LS_THEME = "gruvbox-dark-soft"
+let-env LS_COLORS = (vivid generate $env.LS_THEME)
 
 let-env FZF_DEFAULT_OPTS = "
 --bind ctrl-d:half-page-down
@@ -108,15 +87,6 @@ let-env PATH = (
 
 )
 
-# disable or enable final configuration commands in ./scripts/final.nu
-#
-# let-env USE_FINAL_CONFIG_HOOK = false
-
-let-env QT_QPA_PLATFORMTHEME = "qt5ct"
-
-let-env LS_THEME = "gruvbox-dark-soft"
-let-env LS_COLORS = (vivid generate $env.LS_THEME)
-
 # Directories to search for scripts when calling source or use
 #
 # By default, <nushell-config-dir>/scripts is added
@@ -129,10 +99,13 @@ let-env NU_LIB_DIRS = [
     $env.NU_SCRIPTS_DIR
 ]
 
+#TODO: add more colors to messages
+# Check if nu scripts available
 if not ($env.NU_SCRIPTS_DIR | path exists) {
-  print $"(ansi red_bold)error(ansi reset): ($env.NU_SCRIPTS_DIR) does not exist..."
-  print $"(ansi cyan)info(ansi reset): pulling the scripts from ($env.NU_SCRIPTS_REMOTE)..."
+  print $"(ansi yellow_bold)WARNING(ansi reset): ($env.NU_SCRIPTS_DIR) does not exist..."
+  print $"(ansi cyan)INFO   (ansi reset): pulling the scripts from ($env.NU_SCRIPTS_REMOTE)..."
   git clone $env.NU_SCRIPTS_REMOTE $env.NU_SCRIPTS_DIR
+  print $"(ansi cyan)INFO   (ansi reset): ($env.NU_SCRIPTS_DIR) ready to use"
 }
 
 let-env DEFAULT_CONFIG_FILE = (
@@ -140,7 +113,7 @@ let-env DEFAULT_CONFIG_FILE = (
   | path join "default_config.nu"
 )
 let-env DEFAULT_CONFIG_REMOTE = (
-  "https://raw.githubusercontent.com/nushell/nushell/main/crates/nu-utils/src/sample_config"
+  "https://raw.githubusercontent.com/nushell/nushell/main/crates/nu-utils/src/sample_config/default_config.nu"
 )
 
 export def "config update default" [ --help (-h) ] {
@@ -175,5 +148,27 @@ let-env PROMPT_MULTILINE_INDICATOR = {(
       | str join ")"
     ) + " "
 )}
+
+# Nushell will respect and use the LS_COLORS
+# let-env LS_COLORS = (vivid generate gruvbox-dark-soft | str trim)
+
+# Prompt with Starship
+let-env STARSHIP_SHELL = "nu"
+
+def create_left_prompt [] {
+    starship prompt --cmd-duration $env.CMD_DURATION_MS $'--status=($env.LAST_EXIT_CODE)'
+}
+
+# Use nushell functions to define your right and left prompt
+let-env PROMPT_COMMAND = { || create_left_prompt }
+let-env PROMPT_COMMAND_RIGHT = ""
+
+# The prompt indicators are environmental variables that represent
+# the state of the prompt
+let-env PROMPT_INDICATOR = ""
+let-env PROMPT_INDICATOR_VI_INSERT = ": "
+let-env PROMPT_INDICATOR_VI_NORMAL = "〉"
+let-env PROMPT_MULTILINE_INDICATOR = "::: "
+
 # To add entries to PATH (on Windows you might use Path), you can use the following pattern:
 # let-env PATH = ($env.PATH | split row (char esep) | prepend '/some/path')

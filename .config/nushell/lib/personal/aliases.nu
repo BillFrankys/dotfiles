@@ -1,6 +1,6 @@
-export alias x = exa --icons
-export alias xa = exa --icons --all
-export alias xl	= exa --long
-export alias xla = exa --long --all
-export alias xt	= exa --icons --tree
-export alias xta = exa --icons --tree --all
+# Tree alias
+export alias tree = exa --icons --all --color always --tree
+# Bat aliases
+export alias cat = bat --color always --style auto mod.nu
+# Cat/Rat legacy aliase
+export alias rat = /usr/bin/cat
