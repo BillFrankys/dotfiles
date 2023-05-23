@@ -65,9 +65,9 @@ let-env DOTFILES_WORKTREE = $env.HOME
 let-env DOWNLOADS_DIR = ($env.HOME | path join "Downloads")
 
 let-env QT_QPA_PLATFORMTHEME = "qt5ct"
-
 let-env LS_THEME = "gruvbox-dark-soft"
-let-env LS_COLORS = (vivid generate $env.LS_THEME)
+# Nushell will respect and use the LS_COLORS
+let-env LS_COLORS = (vivid generate $env.LS_THEME | str trim)
 
 let-env FZF_DEFAULT_OPTS = "
 --bind ctrl-d:half-page-down
@@ -148,9 +148,6 @@ let-env PROMPT_MULTILINE_INDICATOR = {(
       | str join ")"
     ) + " "
 )}
-
-# Nushell will respect and use the LS_COLORS
-# let-env LS_COLORS = (vivid generate gruvbox-dark-soft | str trim)
 
 # Prompt with Starship
 let-env STARSHIP_SHELL = "nu"

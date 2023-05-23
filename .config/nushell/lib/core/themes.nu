@@ -1,3 +1,6 @@
+#TODO: fix this
+# use colors.nu *
+
 export def gruvbox-dark-medium [] { return {
     separator: "#d5c4a1"
     leading_trailing_space_bg: { attr: "n" }
