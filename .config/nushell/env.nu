@@ -79,8 +79,16 @@ let-env PATH = (
 if not ($env.HOME | path join ".local" "bin" "carapace" | path exists) {
   print $"(ansi yellow_bold)WARNING(ansi reset): carapace does not exist..."
   print $"(ansi cyan)INFO   (ansi reset): pulling carapace-bin..."
+  mkdir  ($env.HOME | path join ".local" "bin")
   http get  https://github.com/rsteube/carapace-bin/releases/download/v0.24.5/carapace-bin_linux_amd64.tar.gz | tar xvzf - -C  ($env.HOME | path join ".local" "bin") carapace
   print $"(ansi cyan)INFO   (ansi reset): carapace ready to use"
+}
+
+if not ( $env.CARGO_HOME | path join  "bin" "vivid" | path exists) {
+  print $"(ansi yellow_bold)WARNING(ansi reset): vivid does not exist..."
+  print $"(ansi cyan)INFO   (ansi reset): binstall vivid..."
+  cargo binstall vivid  --force -y 
+  print $"(ansi cyan)INFO   (ansi reset): vivid ready to use"
 }
 
 let-env LS_THEME = "gruvbox-dark-soft"
