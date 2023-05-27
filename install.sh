@@ -9,8 +9,9 @@ rm -rf $HOME/.dotfiles
 rm -rf $HOME/.local/share/.dotfiles
 mkdir -p $HOME/.local/share/
 git clone --bare https://github.com/BillFrankys/dotfiles  "$HOME/.local/share/.dotfiles" --depth 1
-git --git-dir="$HOME/.local/share/.dotfiles" config --local status.showUntrackedFiles no
-git --git-dir="$HOME/.local/share/.dotfiles" --work-tree="$HOME" checkout -f
+git config --global alias.dtf '!git --git-dir=/home/dryam/.local/share/.dotfiles --work-tree=/home/dryam'
+git dtf config --local status.showUntrackedFiles no
+git dtf checkout -f
 
 
 # rm -rf HOME/.dotfiles
