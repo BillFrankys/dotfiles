@@ -171,3 +171,8 @@ fzf: nu
 [windows]
 fzf: nu
     http get https://github.com/junegunn/fzf/releases/download/0.41.1/fzf-0.41.1-{{ os_family() }}_amd64.tar.gz | tar xvzf -
+
+# Povides argument completion for multiple CLI commands
+[linux]
+carapace: nu
+    http get  https://github.com/rsteube/carapace-bin/releases/download/v0.24.5/carapace-bin_linux_amd64.tar.gz | tar xvzf - 
