@@ -12,12 +12,13 @@ use core/completions.nu
 # source-env core/keybindings.nu
 
 # External completer example
+
 let carapace_completer = {|spans|
     carapace $spans.0 nushell $spans | from json
 }
 
 let custom_config = {
-  edit_mode: vi  # emacs, vi
+  edit_mode: emacs  # emacs, vi
   show_banner: false
   shell_integration: false
   use_grid_icons: true

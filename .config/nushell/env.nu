@@ -2,6 +2,8 @@
 #
 # version = 0.80.0
 
+use std *
+
 # Specifies how environment variables are:
 # - converted from a string to a value on Nushell startup (from_string)
 # - converted from a value back to a string when running external commands (to_string)
@@ -59,12 +61,28 @@ let-env VISUAL = $env.EDITOR
 let-env LESS_TERMCAP_so = $"(tput bold; tput rev; tput setaf 3)"  # yellow
 let-env MANPAGER = "sh -c 'col -bx | bat -l man -p'" ### "bat" as manpager
 let-env WORKON_HOME = ($env.XDG_DATA_HOME | path join "virtualenvs")
-let-env GIT_REPOS_HOME = ($env.XDG_DATA_HOME | path join "repositories")
-let-env DOTFILES_GIT_DIR = ($env.XDG_DATA_HOME| path join ".dotfiles")
+let-env GIT_REPOS_HOME = ($env.XDG_DATA_HOME | path join "repos")
+let-env DOTFILES_GIT_DIR = ($env.GIT_REPOS_HOME| path join "dotfiles")
 let-env DOTFILES_WORKTREE = $env.HOME
 let-env DOWNLOADS_DIR = ($env.HOME | path join "Downloads")
 
 let-env QT_QPA_PLATFORMTHEME = "qt5ct"
+
+# To add entries to PATH (on Windows you might use Path), you can use the following pattern:
+# let-env PATH = ($env.PATH | split row (char esep) | prepend '/some/path')
+let-env PATH = (
+    $env.PATH | split row (char esep)
+    | prepend ($env.HOME | path join ".local" "bin")
+    | prepend ($env.CARGO_HOME | path join "bin")
+)
+
+if not ($env.HOME | path join ".local" "bin" "carapace" | path exists) {
+  print $"(ansi yellow_bold)WARNING(ansi reset): carapace does not exist..."
+  print $"(ansi cyan)INFO   (ansi reset): pulling carapace-bin..."
+  http get  https://github.com/rsteube/carapace-bin/releases/download/v0.24.5/carapace-bin_linux_amd64.tar.gz | tar xvzf - -C  ($env.HOME | path join ".local" "bin") carapace
+  print $"(ansi cyan)INFO   (ansi reset): carapace ready to use"
+}
+
 let-env LS_THEME = "gruvbox-dark-soft"
 # Nushell will respect and use the LS_COLORS
 let-env LS_COLORS = (vivid generate $env.LS_THEME | str trim)
@@ -78,14 +96,6 @@ let-env FZF_DEFAULT_OPTS = "
 --bind shift-up:preview-up
 "
 
-# To add entries to PATH (on Windows you might use Path), you can use the following pattern:
-# let-env PATH = ($env.PATH | split row (char esep) | prepend '/some/path')
-let-env PATH = (
-    $env.PATH | split row (char esep)
-    | prepend ($env.HOME | path join ".local" "bin")
-    | prepend ($env.CARGO_HOME | path join "bin")
-
-)
 
 # Directories to search for scripts when calling source or use
 #
@@ -149,6 +159,13 @@ let-env PROMPT_MULTILINE_INDICATOR = {(
     ) + " "
 )}
 
+if not ( $env.CARGO_HOME | path join  "bin" "starship" | path exists) {
+  print $"(ansi yellow_bold)WARNING(ansi reset): starship does not exist..."
+  print $"(ansi cyan)INFO   (ansi reset): binstall starship..."
+  cargo binstall starship  --force -y 
+  print $"(ansi cyan)INFO   (ansi reset): starship ready to use"
+}
+
 # Prompt with Starship
 let-env STARSHIP_SHELL = "nu"
 
@@ -169,3 +186,4 @@ let-env PROMPT_MULTILINE_INDICATOR = "::: "
 
 # To add entries to PATH (on Windows you might use Path), you can use the following pattern:
 # let-env PATH = ($env.PATH | split row (char esep) | prepend '/some/path')
+
