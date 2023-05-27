@@ -23,3 +23,4 @@ git --git-dir=/home/dryam/.local/share/.dotfiles --work-tree=/home/dryam checkou
 # git --git-dir=$HOME/.dotfiles/ config --local status.showUntrackedFiles no
 
 # alacritty alacritty-opacity asdf atuin carapace cargo colortty fd felix fzf helix hyperfine nerdfonts nu pastel pueue ripgrep starship trashy vivid wl-clipboard zoxide
+ 
