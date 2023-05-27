@@ -6,7 +6,6 @@ source $CARGO_HOME/env
 curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
 cargo binstall -y --force cargo-update nu
 
-rm -rf $HOME/.dotfiles
 rm -rf $HOME/.local/share/.dotfiles
 mkdir -p $HOME/.local/share/
 mkdir -p $HOME/.local/bin
