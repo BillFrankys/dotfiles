@@ -4,7 +4,7 @@
 !/.gitignore
 !/.gitconfig
 /.config/nushell/history.*
-
+/.config/gh/hosts.yml
 
 
 # Added by cargo
