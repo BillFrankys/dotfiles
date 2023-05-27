@@ -6,7 +6,7 @@
 /.config/nushell/history.*
 /.config/gh/hosts.yml
 /.config/Code/*
-
+/.config/helix/runtime/*
 # Added by cargo
 
 /target
