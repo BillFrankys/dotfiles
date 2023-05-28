@@ -9,7 +9,7 @@ cd ~/.local && curl https://github.com/Kitware/CMake/releases/download/v3.26.4/c
 
 curl https://sh.rustup.rs | CARGO_HOME="$HOME/.local/share/cargo" sh -s -- -y 
 
-. $CARGO_HOME/env
+source $CARGO_HOME/env
 
 curl -o- -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
 
