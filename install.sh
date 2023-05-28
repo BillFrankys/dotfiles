@@ -38,8 +38,8 @@ cp -r /tmp/helix-23.05-x86_64-linux/hx ~/.local/bin/
 rm -rf /tmp/helix-23.05-x86_64-linux/hx
 
 echo "### Install nerfont FiraCode"
-mkdir ~/.local/share/fonts
-http get https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.1/FiraCode.zip | save -f FiraCode.zip
+mkdir -p ~/.local/share/fonts
+curl   -L --proto '=https' https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.1/FiraCode.zip  --output FiraCode.zip
 unzip -o FiraCode.zip  -d ~/.local/share/fonts
 fc-cache  -v -r ~/.local/share/fonts
 rm FiraCode.zip
