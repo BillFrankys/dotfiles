@@ -1,0 +1,12 @@
+[
+    [
+        name,
+        revision,
+        url
+    ];
+    [
+        nupm,
+        main,
+        "https://github.com/amtoine/nupm.git"
+    ]
+]
