@@ -8,7 +8,7 @@ echo "### Installing cmake:"
 cd ~/.local &&  curl   -L --proto '=https' --tlsv1.2 -sSf https://github.com/Kitware/CMake/releases/download/v3.26.4/cmake-3.26.4-linux-x86_64.sh --output cmake-3.26.4-linux-x86_64.sh  && bash ./cmake-3.26.4-linux-x86_64.sh --skip-license
 
 echo "### Installing rustup:"
-curl https://sh.rustup.rs | CARGO_HOME="$HOME/.local/share/cargo" sh -s -- -y 
+curl https://sh.rustup.rs | CARGO_HOME="$HOME/.local/share/cargo" sh -s -- -y -c cargo clippy llvm-tools-preview rust-analyzer-preview rust-analysis rust-docs rust-src rust-std rustc rustc-dev rustfmt 
 
 source $CARGO_HOME/env
 
@@ -32,7 +32,8 @@ CARGO_HOME="$HOME/.local/share/cargo"  cargo binstall -y --force cargo-update nu
 
 echo "### Install helix"
 curl -o- -L --proto '=https' --tlsv1.2 -sSf https://github.com/helix-editor/helix/releases/download/23.05/helix-23.05-x86_64-linux.tar.xz  | tar xfJ - -C /tmp
-cp -r /tmp/helix-23.05-x86_64-linux/runtime ~/.config/helix/
+mkdir -p ~/.config/helix/
+cp -r /tmp/helix-23.05-x86_64-linux/runtime/ ~/.config/helix/
 cp -r /tmp/helix-23.05-x86_64-linux/hx ~/.local/bin/
 rm -rf /tmp/helix-23.05-x86_64-linux/hx
 
