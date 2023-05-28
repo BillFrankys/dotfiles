@@ -4,7 +4,8 @@ export CARGO_HOME="$HOME/.local/share/cargo"
 rm -rf $HOME/.local
 mkdir -p $HOME/.local
 
-cd ~/.local && curl https://github.com/Kitware/CMake/releases/download/v3.26.4/cmake-3.26.4-linux-x86_64.sh  |  sh -s --  --skip-license
+echo "### Installing cmake:"
+cd ~/.local &&  curl   -L --proto '=https' --tlsv1.2 -sSf https://github.com/Kitware/CMake/releases/download/v3.26.4/cmake-3.26.4-linux-x86_64.sh --output cmake-3.26.4-linux-x86_64.sh  && bash ./cmake-3.26.4-linux-x86_64.sh --skip-license
 
 curl https://sh.rustup.rs | CARGO_HOME="$HOME/.local/share/cargo" sh -s -- -y 
 
