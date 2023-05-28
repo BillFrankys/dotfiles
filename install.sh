@@ -15,8 +15,8 @@ curl -o- -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/ca
 
 git clone --bare https://github.com/BillFrankys/dotfiles  "$HOME/.local/share/repos/dotfiles" --depth 1
 git config --global alias.dotfiles '!git --git-dir=/home/dryam/.local/share/repos/dotfiles --work-tree=/home/dryam'
-git --git-dir=/home/dryam/.local/share/repose/dotfiles --work-tree=/home/dryam config --local status.showUntrackedFiles no
-git --git-dir=/home/dryam/.local/share/repose/dotfiles --work-tree=/home/dryam checkout -f
+git --git-dir=/home/dryam/.local/share/repos/dotfiles --work-tree=/home/dryam config --local status.showUntrackedFiles no
+git --git-dir=/home/dryam/.local/share/repos/dotfiles --work-tree=/home/dryam checkout -f
 
 cargo binstall -y --force cargo-update nu alacritty alacritty-opacity asdf atuin colortty fd-find felix  hyperfine pastel pueue ripgrep starship trashy vivid  zoxide
 
