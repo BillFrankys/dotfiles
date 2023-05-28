@@ -32,6 +32,7 @@ CARGO_HOME="$HOME/.local/share/cargo"  cargo binstall -y --force cargo-update nu
 
 echo "### Install helix"
 curl -o- -L --proto '=https' --tlsv1.2 -sSf https://github.com/helix-editor/helix/releases/download/23.05/helix-23.05-x86_64-linux.tar.xz  | tar xfJ - -C /tmp
-cp -r /tmp/helix-23.05-x86_64-linux/runtime ~/.config/helix/
+mkdir -p ~/.config/helix/
+cp -r /tmp/helix-23.05-x86_64-linux/runtime/ ~/.config/helix/
 cp -r /tmp/helix-23.05-x86_64-linux/hx ~/.local/bin/
 rm -rf /tmp/helix-23.05-x86_64-linux/hx
