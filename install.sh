@@ -35,3 +35,10 @@ curl -o- -L --proto '=https' --tlsv1.2 -sSf https://github.com/helix-editor/heli
 cp -r /tmp/helix-23.05-x86_64-linux/runtime ~/.config/helix/
 cp -r /tmp/helix-23.05-x86_64-linux/hx ~/.local/bin/
 rm -rf /tmp/helix-23.05-x86_64-linux/hx
+
+echo "### Install nerfont FiraCode"
+mkdir ~/.local/share/fonts
+http get https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.1/FiraCode.zip | save -f FiraCode.zip
+unzip -o FiraCode.zip  -d ~/.local/share/fonts
+fc-cache  -v -r ~/.local/share/fonts
+rm FiraCode.zip

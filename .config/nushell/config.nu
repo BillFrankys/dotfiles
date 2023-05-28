@@ -8,6 +8,8 @@ use core/themes.nu
 use core/hooks.nu
 use core/completions.nu
 
+use modules/background_task/job.nu
+
 # source-env core/menus.nu
 # source-env core/keybindings.nu
 
@@ -77,3 +79,7 @@ let custom_config = {
 }
 
 let-env config = ($env.config | merge $custom_config)
+
+use nupm/activations *
+use nupm
+use  nu-right-prompt

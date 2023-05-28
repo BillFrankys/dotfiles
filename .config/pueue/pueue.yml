@@ -3,7 +3,7 @@ client:
   read_local_logs: true
   show_confirmation_questions: false
   show_expanded_aliases: false
-  dark_mode: false
+  dark_mode: true
   max_status_lines: null
   status_time_format: '%H:%M:%S'
   status_datetime_format: |-
