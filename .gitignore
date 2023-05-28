@@ -12,7 +12,13 @@
 /target
 /Cargo.lock
 
-
+.wget-hsts
+.aws
+.azure
+.bash_logout
+.motd_shown
+.sudo_as_admin_successful
+.wget-hsts
 # Added by cargo
 #
 # already existing elements were commented out
