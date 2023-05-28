@@ -14,7 +14,7 @@ curl https://sh.rustup.rs | CARGO_HOME="$HOME/.local/share/cargo" sh -s -- -y
 curl -o- -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
 
 git clone --bare https://github.com/BillFrankys/dotfiles  "$HOME/.local/share/repos/dotfiles" --depth 1
-git config --global alias.dtf '!git --git-dir=/home/dryam/.local/share/repos/dotfiles --work-tree=/home/dryam'
+git config --global alias.dotfiles '!git --git-dir=/home/dryam/.local/share/repos/dotfiles --work-tree=/home/dryam'
 git --git-dir=/home/dryam/.local/share/repose/dotfiles --work-tree=/home/dryam config --local status.showUntrackedFiles no
 git --git-dir=/home/dryam/.local/share/repose/dotfiles --work-tree=/home/dryam checkout -f
 
