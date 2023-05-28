@@ -66,6 +66,8 @@ let-env DOTFILES_GIT_DIR = ($env.GIT_REPOS_HOME| path join "dotfiles")
 let-env DOTFILES_WORKTREE = $env.HOME
 let-env DOWNLOADS_DIR = ($env.HOME | path join "Downloads")
 
+let-env NUPM_HOME = ($env.XDG_DATA_HOME | path join "nupm")
+
 let-env QT_QPA_PLATFORMTHEME = "qt5ct"
 
 # To add entries to PATH (on Windows you might use Path), you can use the following pattern:
@@ -109,13 +111,20 @@ let-env FZF_DEFAULT_OPTS = "
 #
 # By default, <nushell-config-dir>/scripts is added
 let-env NU_LIB_DIR = ($nu.config-path | path dirname | path join 'lib')
-let-env NU_SCRIPTS_REMOTE = "https://github.com/goatfiles/nu_scripts"
-let-env NU_SCRIPTS_DIR = ($env.GIT_REPOS_HOME | path join "github.com/goatfiles/nu_scripts")
+let-env NU_SCRIPTS_REMOTE = "https://github.com/nushell/nu_scripts"
+let-env NU_SCRIPTS_DIR = ($env.GIT_REPOS_HOME | path join "github.com/nushell/nu_scripts")
 
 let-env NU_LIB_DIRS = [
     $env.NU_LIB_DIR
     $env.NU_SCRIPTS_DIR
+    $env.NUPM_HOME
 ]
+
+let-env NUPM_CONFIG = {
+    activations: ($nu.default-config-dir | path join "nupm" "activations.nuon")
+    packages: ($nu.default-config-dir | path join "nupm" "packages.nuon")
+    set_prompt: false
+}
 
 #TODO: add more colors to messages
 # Check if nu scripts available
@@ -184,6 +193,13 @@ def create_left_prompt [] {
 # Use nushell functions to define your right and left prompt
 let-env PROMPT_COMMAND = { || create_left_prompt }
 let-env PROMPT_COMMAND_RIGHT = ""
+
+let-env NU_RIGHT_PROMPT_CONFIG = {
+    compact: false            # whether to make the prompt compact or not
+    section_separator: " | "  # the separator between sections
+    overlay_separator: " < "  # the separator between overlays
+    sections: ["shells", "overlays"]  # the sections displayed in the prompt
+}
 
 # The prompt indicators are environmental variables that represent
 # the state of the prompt
