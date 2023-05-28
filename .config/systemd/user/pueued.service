@@ -7,7 +7,7 @@ Description=Pueue Daemon - CLI process scheduler and manager
 
 [Service]
 Restart=no
-ExecStart=/home/dryam/.cargo/bin/pueued -vv
+ExecStart=/home/dryam/.local/share/cargo/bin/pueued -vv
 
 [Install]
 WantedBy=default.target
