@@ -25,7 +25,6 @@ export def main [] { return {
 	)
   }
 
-  #TODO: add autols template
   env_change: {
     PWD: [{|before, after|
       lsd   --git  --gitsort --long --hyperlink always   --total-size

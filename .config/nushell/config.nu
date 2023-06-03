@@ -7,14 +7,13 @@ source default_config.nu
 use core/themes.nu
 use core/hooks.nu
 use core/completions.nu
+use core/menus.nu
+use core/keybindings.nu
 
 use modules/background_task/job.nu
 
 use nupm/activations *
 use nupm
-
-# source-env core/menus.nu
-# source-env core/keybindings.nu
 
 # External completer example
 
@@ -35,8 +34,8 @@ let custom_config = {
   render_right_prompt_on_last_line: false # true or false to enable or disable right prompt to be rendered on last line of the prompt.
   color_config:  (themes gruvbox-dark-medium)  # if you want a light theme, replace `$dark_theme` to `$light_theme`
   hooks: (hooks)
-  # menus: (menus)
-  # keybindings: (keybindings)
+  menus: (menus)
+  keybindings: (keybindings)
   ls: {
     use_ls_colors: true
     clickable_links: true
