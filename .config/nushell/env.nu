@@ -129,10 +129,10 @@ let-env NUPM_CONFIG = {
 #TODO: add more colors to messages
 # Check if nu scripts available
 if not ($env.NU_SCRIPTS_DIR | path exists) {
-  print $"(ansi yellow_bold)WARNING(ansi reset): ($env.NU_SCRIPTS_DIR) does not exist..."
-  print $"(ansi cyan)INFO   (ansi reset): pulling the scripts from ($env.NU_SCRIPTS_REMOTE)..."
+  log warning $'($env.NU_SCRIPTS_REMOTE) does not exist...'
+  log info $'pulling the scripts from ($env.NU_SCRIPTS_REMOTE)'
   git clone $env.NU_SCRIPTS_REMOTE $env.NU_SCRIPTS_DIR
-  print $"(ansi cyan)INFO   (ansi reset): ($env.NU_SCRIPTS_DIR) ready to use"
+  log info $'($env.NU_SCRIPTS_DIR) ready to use')
 }
 
 let-env DEFAULT_CONFIG_FILE = (
@@ -143,9 +143,10 @@ let-env DEFAULT_CONFIG_REMOTE = (
   "https://raw.githubusercontent.com/nushell/nushell/main/crates/nu-utils/src/sample_config/default_config.nu"
 )
 
+# Update the default nu shell config.
 export def "config update default" [] {
   let name = ($env.DEFAULT_CONFIG_FILE | path basename)
-  let default_url = ($env.DEFAULT_CONFIG_REMOTE | path join $name)
+  let default_url = ($env.DEFAULT_CONFIG_REMOTE | path dirname | path join $name)
 
   if ($env.DEFAULT_CONFIG_FILE| path expand | path exists) {
     let new = (http get $default_url)
@@ -169,12 +170,7 @@ if not ($env.DEFAULT_CONFIG_FILE | path exists) {
   config update default
 }
 
-let-env PROMPT_MULTILINE_INDICATOR = {(
-    (
-      [(ansi red) (ansi yellow) (ansi green) (ansi reset)]
-      | str join ")"
-    ) + " "
-)}
+
 
 if not ( $env.CARGO_HOME | path join  "bin" "starship" | path exists) {
   print $"(ansi yellow_bold)WARNING(ansi reset): starship does not exist..."
