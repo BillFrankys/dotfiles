@@ -10,14 +10,25 @@ export def main [] { return {
   display_output: {||
     if (term size).columns >= 100 { table -e } else { table }
   }
-  command_not_found: {||
-    null  # replace with source code to return an error message when a command is not found
+  command_not_found: {|cmd_name|
+	(
+	try { 
+	let pkgs = (cargo search --limit 15 $cmd_name)
+	 if ($pkgs | is-empty) {
+                        return null
+                    }
+	(		$"\n" +
+                        $"($cmd_name) " +
+                        $"may be found in the following crates:\n($pkgs)" | nu-highlight
+                    )
+		}
+	)
   }
 
   #TODO: add autols template
   env_change: {
     PWD: [{|before, after|
-      $nothing  # replace with source code to run if the PWD environment is different since the last repl input
+      lsd   --git  --gitsort --long --hyperlink always   --total-size
     }]
   }
   
