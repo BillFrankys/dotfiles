@@ -1,2 +1,1 @@
-
-
+alias dotfiles = git dotfiles

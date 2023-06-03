@@ -4,11 +4,11 @@ export def main [] {  [
       {
         name: completion_menu
         only_buffer_difference: false
-        marker: "| "
+        marker: ""
         type: {
             layout: columnar
             columns: 4
-            col_width: 20   # Optional value. If missing all the screen width is used to calculate column width
+            #col_width: 20   # Optional value. If missing all the screen width is used to calculate column width
             col_padding: 2
         }
         style: {
@@ -20,7 +20,7 @@ export def main [] {  [
       {
         name: history_menu
         only_buffer_difference: true
-        marker: "? "
+        marker: " history list: "
         type: {
             layout: list
             page_size: 10
@@ -34,11 +34,11 @@ export def main [] {  [
       {
         name: help_menu
         only_buffer_difference: true
-        marker: "? "
+        marker: "󰋖 "
         type: {
             layout: description
             columns: 4
-            col_width: 20   # Optional value. If missing all the screen width is used to calculate column width
+            #col_width: 20   # Optional value. If missing all the screen width is used to calculate column width
             col_padding: 2
             selection_rows: 4
             description_rows: 10
@@ -55,11 +55,11 @@ export def main [] {  [
       {
         name: commands_menu
         only_buffer_difference: false
-        marker: "# "
+        marker: "󰘳 commands list:"
         type: {
             layout: columnar
             columns: 4
-            col_width: 20
+            #col_width: 20
             col_padding: 2
         }
         style: {
@@ -76,7 +76,7 @@ export def main [] {  [
       {
         name: vars_menu
         only_buffer_difference: true
-        marker: "# "
+        marker: "󰫧 variables list:"
         type: {
             layout: list
             page_size: 10
@@ -96,11 +96,11 @@ export def main [] {  [
       {
         name: commands_with_description
         only_buffer_difference: true
-        marker: "# "
+        marker: "󰘳 commands list:"
         type: {
             layout: description
             columns: 4
-            col_width: 20
+            #col_width: 20
             col_padding: 2
             selection_rows: 4
             description_rows: 10

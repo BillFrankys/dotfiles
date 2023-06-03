@@ -143,7 +143,7 @@ let-env DEFAULT_CONFIG_REMOTE = (
   "https://raw.githubusercontent.com/nushell/nushell/main/crates/nu-utils/src/sample_config/default_config.nu"
 )
 
-export def "config update default" [ --help (-h) ] {
+export def "config update default" [] {
   let name = ($env.DEFAULT_CONFIG_FILE | path basename)
   let default_url = ($env.DEFAULT_CONFIG_REMOTE | path join $name)
 
