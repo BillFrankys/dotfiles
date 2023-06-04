@@ -1,3 +1,5 @@
+[include]
+    path = ~/themes.gitconfig
 [alias]
 	dotfiles = !git --git-dir=/home/dryam/.local/share/repos/dotfiles --work-tree=/home/dryam
 [user]
@@ -13,17 +15,18 @@
     diffFilter = delta --color-only --features=interactive
 
 [delta]
-    dark = true
 	true-color = always
-    syntax-theme = gruvbox-dark
-    features = side-by-side line-numbers decorations
+    features = side-by-side line-numbers decorations  gruvmax-fang 
 	line-numbers = true
 	side-by-side = true
 	hyperlinks = true
     hyperlinks-file-link-format = "file-line://{path}:{line}"
+	file-modified-label = "modified:"
+	navigate = true
+	light = false
 
-[delta "interactive"]
-    keep-plus-minus-markers = false
+#[delta "interactive"]
+#    keep-plus-minus-markers = false
 
 [delta "decorations"]
     commit-decoration-style = blue ol
@@ -39,3 +42,9 @@
     line-numbers-right-style = cyan
     line-numbers-minus-style = 124
     line-numbers-plus-style = 28
+
+[diff]	
+    colorMoved = default
+
+[merge]
+    conflictstyle = diff3
