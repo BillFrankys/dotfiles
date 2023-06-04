@@ -1,8 +1,41 @@
 [alias]
-	dotfiles = !git  -C  /home/dryam --git-dir=/home/dryam/.local/share/repos/dotfiles --work-tree=/home/dryam
+	dotfiles = !git --git-dir=/home/dryam/.local/share/repos/dotfiles --work-tree=/home/dryam
 [user]
 	email = nushellrock@gmail.com
 	name = Bill Frankys
 [credential "https://github.com"]
 	helper = 
 	helper = !/usr/bin/gh auth git-credential
+[core]
+    pager = delta
+
+[interactive]
+    diffFilter = delta --color-only --features=interactive
+
+[delta]
+    dark = true
+	true-color = always
+    syntax-theme = gruvbox-dark
+    features = side-by-side line-numbers decorations
+	line-numbers = true
+	side-by-side = true
+	hyperlinks = true
+    hyperlinks-file-link-format = "file-line://{path}:{line}"
+
+[delta "interactive"]
+    keep-plus-minus-markers = false
+
+[delta "decorations"]
+    commit-decoration-style = blue ol
+    commit-style = raw
+    file-style = omit
+    hunk-header-decoration-style = blue box
+    hunk-header-file-style = red
+    hunk-header-line-number-style = "#067a00"
+    hunk-header-style = file line-number syntax
+
+[delta "line-numbers"]
+    line-numbers-left-style = cyan
+    line-numbers-right-style = cyan
+    line-numbers-minus-style = 124
+    line-numbers-plus-style = 28
