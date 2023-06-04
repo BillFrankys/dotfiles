@@ -29,7 +29,7 @@ echo "### Config git untracked files:"
 git dotfiles config --local status.showUntrackedFiles no
 
 echo "### Binstall apps:"
-CARGO_HOME="$HOME/.local/share/cargo"  cargo binstall -y --force cargo-update nu asdf atuin fd-find pueue ripgrep starship trashy vivid zoxide lsd bat alacritty zellij wl-clipboard-rs-tools
+CARGO_HOME="$HOME/.local/share/cargo"  cargo binstall -y --force cargo-update nu asdf atuin fd-find pueue ripgrep starship trashy vivid zoxide lsd bat alacritty zellij wl-clipboard-rs-tools git-delta
 
 echo "### Install helix"
 curl -o- -L --proto '=https' --tlsv1.2 -sSf https://github.com/helix-editor/helix/releases/download/23.05/helix-23.05-x86_64-linux.tar.xz  | tar xfJ - -C /tmp
