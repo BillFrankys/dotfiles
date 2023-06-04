@@ -84,3 +84,4 @@ let custom_config = {
 
 let-env config = ($env.config | merge $custom_config)
 
+source ~/.local/share/atuin/init.nu

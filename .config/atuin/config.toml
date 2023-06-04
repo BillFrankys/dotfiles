@@ -1,16 +1,16 @@
 ## where to store your database, default is your system data directory
 ## mac: ~/Library/Application Support/com.elliehuxtable.atuin/history.db
 ## linux: ~/.local/share/atuin/history.db
-# db_path = "~/.history.db"
+db_path = "~/.local/share/atuin/history.db"
 
 ## where to store your encryption key, default is your system data directory
-# key_path = "~/.key"
+key_path = "~/.local/share/atuin/key"
 
 ## where to store your auth session token, default is your system data directory
-# session_path = "~/.key"
+session_path = "~/.local/share/atuin/key_session"
 
 ## date format used, either "us" or "uk"
-# dialect = "us"
+#dialect = "us"
 
 ## enable or disable automatic sync
 auto_sync = true
@@ -24,7 +24,7 @@ sync_address = "https://api.atuin.sh"
 ## how often to sync history. note that this is only triggered when a command
 ## is ran, so sync intervals may well be longer
 ## set it to 0 to sync after every command
-sync_frequency = "30m"
+sync_frequency = "10m"
 
 ## which search mode to use
 ## possible values: prefix, fulltext, fuzzy, skim
@@ -37,7 +37,7 @@ filter_mode = "global"
 ## which filter mode to use when atuin is invoked from a shell up-key binding
 ## the accepted values are identical to those of "filter_mode"
 ## leave unspecified to use same mode set in "filter_mode"
-# filter_mode_shell_up_keybinding = "global"
+filter_mode_shell_up_keybinding = "global"
 
 ## which style to use
 ## possible values: auto, full, compact
@@ -53,10 +53,10 @@ show_preview = true
 
 ## what to do when the escape key is pressed when searching
 ## possible values: return-original, return-query
-# exit_mode = "return-original"
+exit_mode = "return-original"
 
 ## possible values: emacs, subl
-# word_jump_mode = "emacs"
+word_jump_mode = "emacs"
 
 ## characters that count as a part of a word
 # word_chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
