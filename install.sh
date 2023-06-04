@@ -47,6 +47,6 @@ echo "### Enable pueued service"
 set -x
 systemctl --user  kill  pueued
 systemctl --user daemon-reload
-systemctl --user --no-block start pueued
-
+systemctl --user start pueued
+systemctl --user enable pueued
 echo "### All done"
