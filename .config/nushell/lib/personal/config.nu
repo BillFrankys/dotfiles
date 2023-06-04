@@ -4,19 +4,26 @@ export def "status" [] {
   }
 
 # Show dotfiles changes
-export def "diff" [] {
-    git dotfiles diff
+export def "changes" [] {
+    let choice = (status | where status == modified | get filename | input list -m )
+    git dotfiles diff $choice
 }
 
 # Restore dotfiles to last state.
 export def "restore" [] {
-    let choice = (config status | where status == modified | get filename | input list -m )
+    let choice = (status | where status == modified | get filename | input list -m )
     git dotfiles checkout $choice
+}
+
+# Fully reset dotfiles and clean files.
+export def "reset" [] {
+    let choice = ( ["yes", "no"] | input list "Are you sure want to reset?")
+     if $choice == "yes" {  git dotfiles clean -f }
 }
 
 # Save dotfiles changes
 export def "save" [] {
-    let choice = (config status | where status != added | get filename | input list -m )
+    let choice = ( status | where status != added |  get filename | input list -m | ansi strip )
     git dotfiles add $choice
     git dotfiles commit -m "update dotfiles"
     git dotfiles push --set-upstream origin main

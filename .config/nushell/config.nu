@@ -12,6 +12,8 @@ use core/keybindings.nu
 
 use modules/background_task/job.nu
 
+use personal/config.nu
+
 #use nupm/activations *
 #use nupm
 
