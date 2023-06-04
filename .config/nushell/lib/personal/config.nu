@@ -23,7 +23,7 @@ export def "reset" [] {
 
 # Save dotfiles changes
 export def "save" [] {
-    let choice = ( status | where status != added |  get filename | input list -m | ansi strip )
+    let choice = ( status | where status == modified  |  get filename | input list -m | ansi strip )
     git dotfiles add $choice
     git dotfiles commit -m "update dotfiles"
     git dotfiles push --set-upstream origin main
