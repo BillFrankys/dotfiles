@@ -21,10 +21,18 @@ export def "reset" [] {
      if $choice == "yes" {  git dotfiles clean -f }
 }
 
-# Save dotfiles changes
+# Save modified dotfiles. 
 export def "save" [] {
     let choice = ( status | where status == modified  |  get filename | input list -m | ansi strip )
     git dotfiles add $choice
     git dotfiles commit -m "update dotfiles"
+    git dotfiles push --set-upstream origin main
+}
+
+# Save untracked dotfiles. 
+export def "add" [] {
+    let choice = ( status | where status == untracked  |  get filename | input list -m | ansi strip )
+    git dotfiles add $choice
+    git dotfiles commit -m "added new dotfiles"
     git dotfiles push --set-upstream origin main
 }
