@@ -46,3 +46,5 @@ fc-cache  -v -r ~/.local/share/fonts || true
 echo "### Enable pueued service"
 systemctl --user daemon-reload
 systemctl --user enable --now pueued
+systemctl --user restart pueued
+
