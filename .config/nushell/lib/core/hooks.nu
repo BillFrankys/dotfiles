@@ -27,7 +27,7 @@ export def main [] { return {
 
   env_change: {
     PWD: [{|before, after|
-      lsd  --long --hyperlink always   --total-size
+      lsd 
     }]
   }
   

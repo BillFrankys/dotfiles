@@ -6,8 +6,6 @@ file-types = ["nu"]
 roots = []
 comment-token = "#"
 indent = { tab-width = 2, unit = "  " }
-language-server = { command = "lsp"}
-
 [[grammar]]
 name = "nu"
 source = { git = "https://github.com/LhKipp/tree-sitter-nu", rev = "eb95bdac3abd73ef47e53f19c63e74a31405ebd2" }
