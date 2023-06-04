@@ -43,4 +43,6 @@ mkdir -p ~/.local/share/fonts
 curl -o- -L --proto '=https' --tlsv1.2 https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.1/FiraCode.tar.xz |  tar xvfJ - -C  ~/.local/share/fonts
 fc-cache  -v -r ~/.local/share/fonts || true
 
-
+echo "### Enable pueued service"
+systemctl --user daemon-reload
+systemctl --user enable --now pueued
