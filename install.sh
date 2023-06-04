@@ -45,7 +45,8 @@ fc-cache  -v -r ~/.local/share/fonts || true
 
 echo "### Enable pueued service"
 set -x
- killall -g pueued || true
+killall -g pueued || true
+systemctl --user  kill --force pueued
 systemctl --user daemon-reload
 systemctl --user start pueued
 systemctl --user enable pueued
