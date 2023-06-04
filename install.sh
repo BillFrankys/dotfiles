@@ -44,7 +44,7 @@ curl -o- -L --proto '=https' --tlsv1.2 https://github.com/ryanoasis/nerd-fonts/r
 fc-cache  -v -r ~/.local/share/fonts || true
 
 echo "### Enable pueued service"
+systemctl --user  kill  pueued
 systemctl --user daemon-reload
 systemctl --user enable --now pueued
 systemctl --user restart pueued
-
