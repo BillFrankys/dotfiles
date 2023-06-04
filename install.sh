@@ -11,6 +11,7 @@ echo "### Installing rustup:"
 curl https://sh.rustup.rs | CARGO_HOME="$HOME/.local/share/cargo" sh -s -- -y -c cargo clippy llvm-tools-preview rust-analyzer-preview rust-analysis rust-docs rust-src rust-std rustc rustc-dev rustfmt 
 
 source $CARGO_HOME/env
+. $CARGO_HOME/env
 
 echo "### Installing cargo-binstall:"
 curl -o- -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
@@ -28,7 +29,7 @@ echo "### Config git untracked files:"
 git dotfiles config --local status.showUntrackedFiles no
 
 echo "### Binstall apps:"
-CARGO_HOME="$HOME/.local/share/cargo"  cargo binstall -y --force cargo-update nu asdf atuin fd-find pueue ripgrep starship trashy vivid  zoxide
+CARGO_HOME="$HOME/.local/share/cargo"  cargo binstall -y --force cargo-update nu asdf atuin fd-find pueue ripgrep starship trashy vivid zoxide lsd bat alacritty zellij wl-clipboard-rs-tools
 
 echo "### Install helix"
 curl -o- -L --proto '=https' --tlsv1.2 -sSf https://github.com/helix-editor/helix/releases/download/23.05/helix-23.05-x86_64-linux.tar.xz  | tar xfJ - -C /tmp
@@ -41,3 +42,5 @@ echo "### Install nerfont FiraCode"
 mkdir -p ~/.local/share/fonts
 curl -o- -L --proto '=https' --tlsv1.2 https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.1/FiraCode.tar.xz |  tar xvfJ - -C  ~/.local/share/fonts
 fc-cache  -v -r ~/.local/share/fonts || true
+
+
