@@ -92,3 +92,5 @@ if not ('~/.local/share/atuin' | path exists) {
 let-env config = ($env.config | merge $custom_config)
 
 source ~/.local/share/atuin/init.nu
+
+source ~/.zoxide.nu

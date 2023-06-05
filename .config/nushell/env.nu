@@ -207,3 +207,5 @@ let-env PROMPT_MULTILINE_INDICATOR = "::: "
 # To add entries to PATH (on Windows you might use Path), you can use the following pattern:
 # let-env PATH = ($env.PATH | split row (char esep) | prepend '/some/path')
 
+# zoxide init nushell | save -f ~/.zoxide.nu
+zoxide init nushell --cmd cd --hook prompt | save -f ~/.zoxide.nu
