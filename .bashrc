@@ -115,4 +115,4 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-. "/home/dryam/.local/share/cargo/env"
+. "/home/${USER}/.local/share/cargo/env"

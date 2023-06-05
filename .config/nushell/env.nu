@@ -209,3 +209,4 @@ let-env PROMPT_MULTILINE_INDICATOR = "::: "
 
 let-env ASDF_NU_DIR = ($env.HOME | path join '.asdf')
 zoxide init nushell --cmd cd --hook prompt | save -f ~/.zoxide.nu
+atuin init --disable-up-arrow nu | save -f ~/.local/share/atuin/init.nu
