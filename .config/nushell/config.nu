@@ -82,6 +82,13 @@ let custom_config = {
   }
 }
 
+# TODO: add log
+# Check if atuin dir available
+if not ('~/.local/share/atuin' | path exists) {
+  mkdir  ~/.local/share/atuin/
+  atuin init nu | save ~/.local/share/atuin/init.nu
+}
+
 let-env config = ($env.config | merge $custom_config)
 
 source ~/.local/share/atuin/init.nu
