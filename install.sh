@@ -20,10 +20,10 @@ echo "### Clone dotfiles:"
 git clone --bare https://github.com/BillFrankys/dotfiles  "$HOME/.local/share/repos/dotfiles" --depth 1
 
 echo "### Checkout dotfiles:"
-git --git-dir=/home/dryam/.local/share/repos/dotfiles --work-tree=/home/dryam checkout -f
+git --git-dir=/home/${USER}/.local/share/repos/dotfiles --work-tree=/home/${USER} checkout -f
 
 echo "### Config git dotfiles alias:"
-git config --global alias.dotfiles '!git --git-dir=/home/dryam/.local/share/repos/dotfiles --work-tree=/home/dryam'
+git config --global alias.dotfiles "!git --git-dir=/home/${USER}/.local/share/repos/dotfiles --work-tree=/home/${USER}"
 
 echo "### Config git untracked files:"
 git dotfiles config --local status.showUntrackedFiles no
