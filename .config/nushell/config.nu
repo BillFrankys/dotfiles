@@ -14,8 +14,8 @@ use modules/background_task/job.nu
 
 use personal/config.nu
 
-#use nupm/activations *
-#use nupm
+use nupm/activations *
+use nupm
 
 # External completer example
 
@@ -94,3 +94,4 @@ let-env config = ($env.config | merge $custom_config)
 source ~/.local/share/atuin/init.nu
 
 source ~/.zoxide.nu
+source /home/dryam/.asdf/asdf.nu
