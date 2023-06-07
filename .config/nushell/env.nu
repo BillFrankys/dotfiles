@@ -101,18 +101,18 @@ let-env NU_LIB_DIR = ($nu.config-path | path dirname | path join 'lib')
 let-env NU_SCRIPTS_REMOTE = "https://github.com/nushell/nu_scripts"
 let-env NU_SCRIPTS_DIR = ($env.GIT_REPOS_HOME | path join "github.com/nushell/nu_scripts")
 
-let-env NU_LIB_DIRS = [
-    $env.NU_LIB_DIR
-    $env.NU_SCRIPTS_DIR
-    $env.NUPM_HOME
-]
-
 let-env NUPM_HOME = ($env.XDG_DATA_HOME | path join "nupm")
 let-env NUPM_CONFIG = {
     activations: ($nu.default-config-dir | path join "nupm" "activations.nuon")
     packages: ($nu.default-config-dir | path join "nupm" "packages.nuon")
     set_prompt: false
 }
+
+let-env NU_LIB_DIRS = [
+    $env.NU_LIB_DIR
+    $env.NU_SCRIPTS_DIR
+    $env.NUPM_HOME
+]
 
 # To add entries to PATH (on Windows you might use Path), you can use the following pattern:
 # let-env PATH = ($env.PATH | split row (char esep) | prepend '/some/path')
