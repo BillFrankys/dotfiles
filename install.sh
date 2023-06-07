@@ -11,8 +11,6 @@ rm -rf $HOME/.share
 mkdir -p $HOME/.share/zoxide
 mkdir -p $HOME/.share/atuin
 
-/.local/state 
-
 echo "### Installing cmake:"
 cd ~/.local &&  curl   -L --proto '=https' --tlsv1.2 -sSf https://github.com/Kitware/CMake/releases/download/v3.26.4/cmake-3.26.4-linux-x86_64.sh --output cmake-3.26.4-linux-x86_64.sh  && bash ./cmake-3.26.4-linux-x86_64.sh --skip-license
 
