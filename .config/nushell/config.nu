@@ -23,7 +23,7 @@ let carapace_completer = {|spans|
     carapace $spans.0 nushell $spans | from json
 }
 
-let custom_config = {
+let-env config = {
   edit_mode: emacs  # emacs, vi
   show_banner: false
   shell_integration: false

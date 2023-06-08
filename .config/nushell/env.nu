@@ -70,6 +70,10 @@ def create_left_prompt [] {
     starship prompt --cmd-duration $env.CMD_DURATION_MS $'--status=($env.LAST_EXIT_CODE)'
 }
 
+# Use nushell functions to define your right and left prompt
+let-env PROMPT_COMMAND = { || create_left_prompt }
+let-env PROMPT_COMMAND_RIGHT = ""
+
 # The prompt indicators are environmental variables that represent
 # the state of the prompt
 let-env PROMPT_INDICATOR = ""
@@ -78,14 +82,14 @@ let-env PROMPT_INDICATOR_VI_NORMAL = "〉"
 let-env PROMPT_MULTILINE_INDICATOR = "::: "
 
 # FZF settings
-let-env FZF_DEFAULT_OPTS = "
---bind ctrl-d:half-page-down
---bind ctrl-u:half-page-up
---bind shift-right:preview-half-page-down
---bind shift-left:preview-half-page-up
---bind shift-down:preview-down
---bind shift-up:preview-up
-"
+#let-env FZF_DEFAULT_OPTS = "
+#--bind ctrl-d:half-page-down
+#--bind ctrl-u:half-page-up
+#--bind shift-right:preview-half-page-down
+#--bind shift-left:preview-half-page-up
+#--bind shift-down:preview-down
+#--bind shift-up:preview-up
+#"
 
 # Directories to search for plugin binaries when calling register
 #
