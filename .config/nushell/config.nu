@@ -14,8 +14,8 @@ use modules/background_task/job.nu
 
 use personal/config.nu
 
-#use nupm/activations *
-#use nupm
+use nupm/activations *
+use nupm
 
 # External completer example
 
