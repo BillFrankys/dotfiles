@@ -1,8 +1,12 @@
 #!/usr/bin/env bash
 export CARGO_HOME="$HOME/.local/share/cargo"
 
+echo "### Prepare ~/.local:"
 rm -rf $HOME/.local
-mkdir -p $HOME/.local
+mkdir -p $HOME/.local/state
+mkdir -p $HOME/.local/share/zoxide
+mkdir -p $HOME/.local/share/atuin
+
 
 echo "### Installing cmake:"
 cd ~/.local &&  curl   -L --proto '=https' --tlsv1.2 -sSf https://github.com/Kitware/CMake/releases/download/v3.26.4/cmake-3.26.4-linux-x86_64.sh --output cmake-3.26.4-linux-x86_64.sh  && bash ./cmake-3.26.4-linux-x86_64.sh --skip-license
