@@ -1,3 +1,5 @@
+theme = "gruvbox"
+
 [editor]
 scrolloff = 5
 mouse = true
